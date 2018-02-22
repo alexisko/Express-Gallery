@@ -1,11 +1,9 @@
 Express Gallery
 ===============
 
-Express, Knex.js, Bookshelf.js, HTML5, stored on PostgreSQL
+Express, Sequelize, HTML5, stored on PostgreSQL
 
-Use the Express, Knex.js, Bookshelf.js, and *almost* any other library or templating engines you want to fulfill the requirements.
-recommended: Handbars and SASS.
-helpful: Livereload, Gulp for watching compiling SASS
+Use the Express, Sequelize, and almost any other library or templating engines you want to fulfill the requirements. recommended: Handbars and SASS. helpful: Livereload, Gulp for watching compiling SASS
 
 ---
 
