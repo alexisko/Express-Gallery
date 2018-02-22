@@ -8,7 +8,7 @@ router.route('/')
   .get((req, res) => {
     Gallery.findAll()
       .then((photos) => {
-        console.log(photos);
+        res.render('home');
       })
       .catch((err) => {
         console.log('ERROR: ', err);

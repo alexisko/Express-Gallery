@@ -11,6 +11,7 @@ const saltRounds = 10;
 router.route('/login')
   .get((req, res) => {
     console.log('login page');
+    res.render('login');
   })
   .post(passport.authenticate('local', {
     successRedirect: '/',
@@ -21,12 +22,15 @@ router.route('/login')
 router.route('/signup')
   .get((req, res) => {
     console.log('sign up');
+    res.render('signup');
   });
 
 /* Logout current user */
 router.route('/logout')
   .get((req, res) => {
     console.log('logout');
+    req.session.destroy(req.sessionID);
+    res.redirect('/');
   });
 
 /* Create new user */
@@ -43,8 +47,7 @@ router.route('/')
               password: hash
             })
             .then(() => {
-              // redirect to page
-              res.end();
+              res.redirect('/');
             })
             .catch((err) => {
               console.log('ERROR: ', err);
