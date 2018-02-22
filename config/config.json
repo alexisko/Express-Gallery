@@ -1,17 +1,17 @@
 {
   "development": {
-    "username": "root",
+    "username": "hiki",
     "password": null,
-    "database": "database_development",
+    "database": "express_gallery",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "postgres"
   },
   "test": {
-    "username": "root",
+    "username": "hiki",
     "password": null,
-    "database": "database_test",
+    "database": "express_gallery",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "postgres"
   },
   "production": {
     "username": "root",
