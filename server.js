@@ -4,11 +4,18 @@ const exphbs = require('express-handlebars');
 const mo = require('method-override');
 const bp = require('body-parser');
 
+// DEV-CREATED FILES
+const db = require('./models');
+
 // FILES
 const PORT = process.env.PORT || 8080;
+const CONFIG = require('./config/config.json');
 
 // EXPRESS
 const app = express();
+
+// DB
+const { Gallery, User } = db;
 
 // ROUTERS
 const indexRouter = require('./routes/index.js');
@@ -36,6 +43,9 @@ app.use(mo(function (req, res) {
   }
 }));
 
+// PUBLIC STATIC FILES
+app.use(express.static('public'));
+
 // ROUTES
 app.use('/', indexRouter);
 app.use('/gallery', galleryRouter);
@@ -43,5 +53,6 @@ app.use('/user', userRouter);
 
 // SERVER
 const server = app.listen(PORT, () => {
+  db.sequelize.sync();
   console.log(`SERVER: Listening on ${PORT}`);
 });
