@@ -1,0 +1,55 @@
+$dark-grey: #7c777d;
+$light-grey: #c7c7c7;
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+}
+
+.dashed {
+  border: 0.5px dashed $light-grey;
+}
+
+.header {
+  font-size: 4rem;
+  font-weight: 800;
+  letter-spacing: 3px;
+  margin-right: 2rem;
+}
+
+.header > a, a:link,
+a:active, a:hover, a:visited {
+  color: $dark-grey;
+}
+
+.header-text {
+  border-left: 1px solid $light-grey;
+  color: #c7c7c7;
+  width: 225px;
+}
+
+.header-text > p {
+  font-size: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+@media screen and (max-width: 700px) {
+  header {
+    justify-content: center;
+  }
+
+  span.header {
+    margin-right: 0;
+  }
+
+  .header-text {
+    display: none;
+  }
+
+  hr.dashed {
+    display: none;
+  }
+  }
