@@ -2,21 +2,18 @@
 <html>
 <head>
   <title>_ARCHITEKT | Alexis Okamura</title>
+  <link rel="stylesheet" type="text/css" href="/css/main.css">
 </head>
 <body>
   <div class="container">
-    <hr>
-    <header>
-      <span><a href="/">_ARCHITEKT</a></span>
-      <p>Welcome to our online portfolio, we are a small group of passionate designers and architects, looking to change and create amazing digital images to inspire others to follow in our innovative steps.</p>
-    </header>
+    {{> navbar}}
+    <hr class="dashed">
+    {{> header}}
+    <main>
+      {{{body}}}
+    </main>
+    <hr class="solid">
+    {{> footer}}
   </div>
-  <div class="container">
-    {{{body}}}
-  </div>
-  <footer>
-    <hr>
-    <span>Designed and coded by <a href="https://github.com/alexisko">Alexis Okamura</a></span>
-  </footer>
 </body>
 </html>

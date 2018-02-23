@@ -1,9 +1,17 @@
-<h1>JOIN _ARCHITEKT</h1>
+<div class="form">
+  <h1>Create your account:</h1>
+  <form action="/user" method="POST">
+    <label>Username:</label>
+    <input type="text" name="username">
+    <label>Password:</label>
+    <input type="password" name="password">
 
-<form action="/user" method="POST">
-  <label>Username:</label>
-  <input type="text" name="username">
-  <label>Password:</label>
-  <input type="text" name="password">
-  <input type="submit" value="send">
-</form>
+    <input id="submit-btn" type="submit" value="submit">
+  </form>
+
+  <hr class="normal">
+
+  <div class="redirect">
+    <p>Already have an account? Login <a href="/user/login">here.</a></p>
+  </div>
+</div>

@@ -1,9 +1,17 @@
-<h1>LOGIN</h1>
+<div class="form">
+  <h1>Login to your account:</h1>
 
-<form action="/user/login" method="POST">
-  <label>Username:</label>
-  <input type="text" name="username">
-  <label>Password:</label>
-  <input type="text" name="password">
-  <input type="submit" value="send">
-</form>
+  <form action="/user/login" method="POST">
+    <label>Username:</label>
+    <input type="text" name="username" placeholder="username">
+    <label>Password:</label>
+    <input type="password" name="password" placeholder="password">
+    <input id="submit-btn" type="submit" value="login">
+  </form>
+
+  <hr class="normal">
+
+  <div class="redirect">
+    <p>New to _ARCHITEKT? <a href="/user/signup">Create an account.</a></p>
+  </div>
+</div>

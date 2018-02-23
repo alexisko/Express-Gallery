@@ -1,0 +1,9 @@
+<div class="navbar">
+  {{#if username}}
+    <p>Hello, {{username}}</p>
+    <a href="/user/logout">logout</a>
+  {{else}}
+    <a href="/user/login">login</a>
+    <a href="/user/signup">sign-up</a>
+  {{/if}}
+</div>
