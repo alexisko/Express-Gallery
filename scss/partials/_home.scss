@@ -1,0 +1,35 @@
+.gallery-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1.5rem;
+}
+
+.photo {
+  max-width: 575px;
+}
+
+@media screen and (min-width: 700px) {
+  .gallery-slideshow {
+    width: 100%;
+
+    img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+    }
+  }
+
+  .gallery-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-flow: wrap;
+    margin-top: 1.5rem;
+  }
+
+  .photo {
+    width: 225px;
+    margin-bottom: 0.5rem;
+  }
+}

@@ -1,0 +1,13 @@
+.navbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  width: 80%;
+  font-size: 12px;
+  padding: 0.5rem;
+}
+
+.navbar > * {
+  margin: 0 0 0 1rem;
+}

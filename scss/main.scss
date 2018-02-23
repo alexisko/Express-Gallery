@@ -1,0 +1,46 @@
+@import "partials/header";
+@import "partials/footer";
+@import "partials/form";
+@import "partials/navbar";
+@import "partials/photo-detail";
+@import "partials/home";
+
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+html, body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+}
+
+a, a:active,
+a:link, a:hover,
+a:visited {
+  text-decoration: none;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  width: 80%;
+}
+
+hr {
+  width: 80%;
+}
+
+hr.dashed {
+  border: 0.5px dashed $light-grey;
+}
+
+hr.solid {
+  border: 0.5px solid #c7c7c7;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}

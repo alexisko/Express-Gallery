@@ -8,7 +8,16 @@ router.route('/')
   .get((req, res) => {
     Gallery.findAll()
       .then((photos) => {
-        res.render('home');
+        if(req.user) {
+          res.render('home', {
+            username: req.user.username,
+            photos: photos
+          });
+        } else {
+          res.render('home', {
+            photos: photos
+          });
+        }
       })
       .catch((err) => {
         console.log('ERROR: ', err);

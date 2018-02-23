@@ -1,0 +1,29 @@
+$light-grey: #c7c7c7;
+$dark-grey: #7c777d;
+
+.photo-detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: $dark-grey;
+}
+
+.photo-detail > img {
+  width: 75%;
+  max-height: 425px;
+  max-width: 1000px;
+}
+
+.photo-detail > span {
+  color: $light-grey;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.photo-container {
+  margin-top: 1.5rem;
+}
+
+@media screen and (max-width: 700px) {
+
+}

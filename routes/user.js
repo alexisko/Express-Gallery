@@ -10,7 +10,6 @@ const saltRounds = 10;
 /* Login existing user */
 router.route('/login')
   .get((req, res) => {
-    console.log('login page');
     res.render('login');
   })
   .post(passport.authenticate('local', {
@@ -21,16 +20,15 @@ router.route('/login')
 /* See "Sign-Up" page */
 router.route('/signup')
   .get((req, res) => {
-    console.log('sign up');
     res.render('signup');
   });
 
 /* Logout current user */
 router.route('/logout')
   .get((req, res) => {
-    console.log('logout');
     req.session.destroy(req.sessionID);
     res.redirect('/');
+    res.end();
   });
 
 /* Create new user */
@@ -48,6 +46,7 @@ router.route('/')
             })
             .then(() => {
               res.redirect('/');
+              res.end();
             })
             .catch((err) => {
               console.log('ERROR: ', err);

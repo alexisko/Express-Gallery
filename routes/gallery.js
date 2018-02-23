@@ -3,13 +3,28 @@ const router = express.Router();
 const db = require('../models');
 const Gallery = db.Gallery;
 
+/* See a "new photo" form */
+router.route('/new')
+  .get((req, res) => {
+    if(req.user) {
+      res.render('photo-new', {
+        username: req.user.username
+      });
+    }
+    // redirect to error page
+  });
+
 /* See a form to edit a gallery photo identified by the :id param */
 router.route('/:id/edit')
   .get((req, res) => {
     Gallery.findById(req.params.id)
       .then((photo) => {
-        console.log('edit photo form');
-        console.log(photo);
+        if(req.user) {
+          res.render('photo-edit', {
+            username: req.user.username
+          });
+        }
+        // redirect to error page
       })
       .catch((err) => {
         console.log('ERROR: ', err);
@@ -22,8 +37,23 @@ router.route('/:id')
   .get((req, res) => {
     Gallery.findById(req.params.id)
       .then((photo) => {
-        console.log('get photo');
-        console.log(photo);
+        if(req.user) {
+          console.log(photo);
+          res.render('photo-detail', {
+            title: photo.title,
+            author: req.user.username,
+            link: photo.link,
+            description: photo.description,
+            username: req.user.username
+          });
+        } else {
+          res.render('photo-detail', {
+            title: photo.dataValues.title,
+            author: req.user.username,
+            link: photo.dataValues.link,
+            description: photo.dataValues.description
+          });
+        }
       })
       .catch((err) => {
         console.log('ERROR: ', err);
@@ -64,24 +94,18 @@ router.route('/:id')
       });
   });
 
-/* See a "new photo" form */
-router.route('/new')
-  .get((req, res) => {
-    console.log('new photo form');
-  });
-
 /* Create a new gallery photo */
 router.route('/')
   .post((req, res) => {
     Gallery.create({
       title: req.body.title,
-      author: req.body.username,
+      author: req.user.username,
       link: req.body.link,
       description: req.body.description
     })
       .then((photo) => {
-        console.log('new photo');
-        console.log(photo);
+        res.redirect(`/gallery/${photo.id}`);
+        res.end();
       })
       .catch((err) => {
         console.log('ERROR: ', err);
