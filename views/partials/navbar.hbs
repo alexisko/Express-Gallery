@@ -1,7 +1,7 @@
 <div class="navbar">
   {{#if username}}
     <a class="link" href="/gallery/new"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
-    <p>hello, {{username}}</p>
+    <p>hello, <a href="/user/photos">{{username}}</a></p>
     <a href="/user/logout">logout</a>
   {{else}}
     <a href="/user/login">login</a>

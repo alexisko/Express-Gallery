@@ -17,18 +17,38 @@ router.route('/login')
     failureRedirect: '/user/login'
   }));
 
-/* See "Sign-Up" page */
-router.route('/signup')
-  .get((req, res) => {
-    res.render('signup');
-  });
-
 /* Logout current user */
 router.route('/logout')
   .get((req, res) => {
     req.session.destroy(req.sessionID);
     res.redirect('/');
     res.end();
+  });
+
+/* View a list of all user's photos */
+router.route('/photos')
+  .get((req, res) => {
+    Gallery.findAll({
+      where: {
+        author: req.user.username
+      }
+    })
+    .then((photos) => {
+      console.log(photos);
+      res.render('user-photos', {
+        username: req.user.username,
+        photos: photos
+      });
+    })
+    .catch((err) => {
+      console.log('ERROR: ', err);
+    });
+  });
+
+/* See "Sign-Up" page */
+router.route('/signup')
+  .get((req, res) => {
+    res.render('signup');
   });
 
 /* Create new user */

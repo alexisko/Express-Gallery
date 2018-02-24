@@ -1,0 +1,21 @@
+<div class="user-photos-container">
+  <h1>Your photos</h1>
+  {{#each photos}}
+      <div class="user-photo">
+        <a href="/gallery/{{id}}">
+          <div style="background:url('{{link}}'); background-size:cover;">
+          </div>
+        </a>
+      </div>
+      <div class="settings">
+        <form action="/gallery/{{id}}" method="post">
+          <input type="hidden" name="_method" value="GET">
+          <input class="submit-btn btn green space" type="submit" value="edit">
+        </form>
+        <form action="/gallery/{{id}}" method="post">
+          <input type="hidden" name="_method" value="DELETE">
+          <input class="submit-btn btn red space" type="submit" value="delete">
+        </form>
+      </div>
+  {{/each}}
+</div>
