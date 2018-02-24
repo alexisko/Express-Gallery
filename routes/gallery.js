@@ -32,7 +32,9 @@ router.route('/:id/edit')
             });
           } else {
             // redirect user to error page
-            res.render('error');
+            res.render('error', {
+              username: req.user.username
+            });
           }
         } else {
           res.render('error');
@@ -85,7 +87,6 @@ router.route('/:id')
   })
   // Update a single gallery photo
   .put((req, res) => {
-    console.log('PUT REQUEST');
     console.log(req.params.id);
     Gallery.update({
       title: req.body.title,
