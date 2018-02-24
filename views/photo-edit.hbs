@@ -1,15 +1,17 @@
-<h1>Edit Photo</h1>
+<div class="form">
+  <h1>Edit Photo</h1>
 
-<form action="/gallery/{{id}}" method="POST">
-  <label>Title</label>
-  <input type="text" name="title" placeholder="" value="">
+  <form action="/gallery/{{id}}" method="POST">
+    <label>Title</label>
+    <input class="input" type="text" name="title" placeholder="{{title}}" value="{{title}}">
 
-  <label>Link</label>
-  <input type="text" name="link" placeholder="" value="">
+    <label>Image Link</label>
+    <input class="input" type="text" name="link" placeholder="{{link}}" value="{{link}}">
 
-  <label>Description</label>
-  <input type="text" name="description" placeholder="" value="">
+    <label>Description</label>
+    <input class="input" type="text" name="description" placeholder="{{description}}" value="{{description}}">
 
-  <input type="hidden" name="_method" value="PUT">
-  <input type="submit" name="send">
-</form>
+    <input type="hidden" name="_method" value="PUT">
+    <input class="submit-btn blue" type="submit">
+  </form>
+</div>

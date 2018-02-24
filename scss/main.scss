@@ -7,15 +7,25 @@
 
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
+$dark-grey: #7c777d;
+$light-grey: #c7c7c7;
+
 html, body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   font-family: 'Roboto', sans-serif;
   margin: 0;
+  width: 100%;
 }
 
 a, a:active,
-a:link, a:hover,
-a:visited {
+a:link, a:visited {
   text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 main {
@@ -23,11 +33,11 @@ main {
   flex-direction: column;
   align-items: center;
   flex: 1;
-  width: 80%;
+  width: 100%;
 }
 
 hr {
-  width: 80%;
+  width: 100%;
 }
 
 hr.dashed {
@@ -35,7 +45,9 @@ hr.dashed {
 }
 
 hr.solid {
-  border: 0.5px solid #c7c7c7;
+  border: 0.5px solid $light-grey;
+  margin-top: 1rem;
+  margin-bottom:1rem;
 }
 
 .container {
@@ -43,4 +55,11 @@ hr.solid {
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
+  width: 80%;
+}
+
+@media screen and (min-width: 700px) {
+  .container {
+    max-width: 800px;
+  }
 }

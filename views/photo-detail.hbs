@@ -5,4 +5,17 @@
     <p>{{author}}</p>
     <p>{{description}}</p>
   </div>
+  {{#if auth}}
+    <hr class="solid">
+    <div class="photo-settings">
+      <form class="edit" action="/gallery/{{id}}/edit" method="post">
+      <input type="hidden" name="_method" value="GET">
+      <input class="submit-btn btn red" type="submit" value="edit">
+    </form>
+    <form class="edit" action="/gallery/{{id}}" method="post">
+      <input type="hidden" name="_method" value="DELETE">
+      <input class="submit-btn btn green" type="submit" value="delete">
+    </form>
+    </div>
+  {{/if}}
 </div>

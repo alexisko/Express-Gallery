@@ -103,7 +103,6 @@ passport.use(new LocalStrategy(
 ));
 
 passport.serializeUser((user, done) => {
-  console.log('serializeuser');
   done(null, user.id);
 });
 

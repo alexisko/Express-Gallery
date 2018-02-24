@@ -1,13 +1,25 @@
+$dark-grey: #7c777d;
+
+.navbar > * {
+  margin: 0 0 0 1rem;
+}
+
+.link:hover {
+  text-decoration: none;
+}
+
 .navbar {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: flex-end;
-  width: 80%;
+  justify-content: center;
   font-size: 12px;
-  padding: 0.5rem;
+  padding: 1rem 0 0.5rem 0;
+  width: 100%;
 }
 
-.navbar > * {
-  margin: 0 0 0 1rem;
+@media screen and (min-width: 700px) {
+  .navbar {
+    justify-content: flex-end;
+  }
 }

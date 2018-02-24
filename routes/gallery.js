@@ -10,8 +10,9 @@ router.route('/new')
       res.render('photo-new', {
         username: req.user.username
       });
+    } else {
+      // redirect to error page
     }
-    // redirect to error page
   });
 
 /* See a form to edit a gallery photo identified by the :id param */
@@ -19,12 +20,20 @@ router.route('/:id/edit')
   .get((req, res) => {
     Gallery.findById(req.params.id)
       .then((photo) => {
-        if(req.user) {
+        if(req.user.username === photo.author) {
+          // user can only edit picture if they created it
           res.render('photo-edit', {
+            id: photo.id,
+            title: photo.title,
+            link: photo.link,
+            description: photo.description,
             username: req.user.username
           });
+        } else {
+          // redirect user to gallery page
+          res.redirect(`/gallery/${photo.id}`);
+          res.end();
         }
-        // redirect to error page
       })
       .catch((err) => {
         console.log('ERROR: ', err);
@@ -35,23 +44,35 @@ router.route('/:id/edit')
 router.route('/:id')
   // To see a single gallery photo
   .get((req, res) => {
+    console.log('get');
     Gallery.findById(req.params.id)
       .then((photo) => {
         if(req.user) {
-          console.log(photo);
-          res.render('photo-detail', {
-            title: photo.title,
-            author: req.user.username,
-            link: photo.link,
-            description: photo.description,
-            username: req.user.username
-          });
+          if(req.user.username === photo.author) {
+            res.render('photo-detail', {
+              id: photo.id,
+              title: photo.title,
+              author: photo.author,
+              link: photo.link,
+              description: photo.description,
+              username: req.user.username,
+              auth: true
+            });
+          } else {
+            res.render('photo-detail', {
+              title: photo.title,
+              author: photo.author,
+              link: photo.link,
+              description: photo.description,
+              username: req.user.username
+            });
+          }
         } else {
           res.render('photo-detail', {
-            title: photo.dataValues.title,
-            author: req.user.username,
-            link: photo.dataValues.link,
-            description: photo.dataValues.description
+            title: photo.title,
+            author: photo.author,
+            link: photo.link,
+            description: photo.description
           });
         }
       })
@@ -61,6 +82,8 @@ router.route('/:id')
   })
   // Update a single gallery photo
   .put((req, res) => {
+    console.log('PUT REQUEST');
+    console.log(req.params.id);
     Gallery.update({
       title: req.body.title,
       link: req.body.link,
@@ -71,8 +94,7 @@ router.route('/:id')
       }
     })
       .then((photo) => {
-        console.log('edit photo');
-        console.log(photo);
+        res.redirect(`/gallery/${req.params.id}`);
       })
       .catch((err) => {
         console.log('ERROR: ', err);
@@ -86,8 +108,8 @@ router.route('/:id')
       }
     })
       .then((photo) => {
-        console.log('delete photo');
-        console.log(photo);
+        res.redirect('/');
+        res.end();
       })
       .catch((err) => {
         console.log('ERROR: ', err);

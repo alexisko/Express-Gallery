@@ -6,17 +6,18 @@ header {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 80%;
+  width: 100%;
+  margin-bottom: 1rem;
 }
 
-.header {
+span.header-title {
   font-size: 4rem;
   font-weight: 800;
   letter-spacing: 3px;
   margin-right: 2rem;
 }
 
-.header > a, a:link,
+span.header-title > a, a:link,
 a:active, a:hover, a:visited {
   color: $dark-grey;
 }
@@ -37,7 +38,7 @@ a:active, a:hover, a:visited {
     justify-content: center;
   }
 
-  span.header {
+  span.header-title {
     margin-right: 0;
   }
 
