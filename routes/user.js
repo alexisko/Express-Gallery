@@ -34,11 +34,14 @@ router.route('/photos')
       }
     })
     .then((photos) => {
-      console.log(photos);
-      res.render('user-photos', {
-        username: req.user.username,
-        photos: photos
-      });
+      if(req.user) {
+        res.render('user-photos', {
+          username: req.user.username,
+          photos: photos
+        });
+      } else {
+        res.render('error');
+      }
     })
     .catch((err) => {
       console.log('ERROR: ', err);

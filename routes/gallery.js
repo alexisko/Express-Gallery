@@ -11,7 +11,7 @@ router.route('/new')
         username: req.user.username
       });
     } else {
-      // redirect to error page
+      res.render('error');
     }
   });
 
@@ -20,19 +20,22 @@ router.route('/:id/edit')
   .get((req, res) => {
     Gallery.findById(req.params.id)
       .then((photo) => {
-        if(req.user.username === photo.author) {
-          // user can only edit picture if they created it
-          res.render('photo-edit', {
-            id: photo.id,
-            title: photo.title,
-            link: photo.link,
-            description: photo.description,
-            username: req.user.username
-          });
+        if(req.user) {
+          if(req.user.username === photo.author) {
+            // user can only edit picture if they created it
+            res.render('photo-edit', {
+              id: photo.id,
+              title: photo.title,
+              link: photo.link,
+              description: photo.description,
+              username: req.user.username
+            });
+          } else {
+            // redirect user to error page
+            res.render('error');
+          }
         } else {
-          // redirect user to gallery page
-          res.redirect(`/gallery/${photo.id}`);
-          res.end();
+          res.render('error');
         }
       })
       .catch((err) => {
