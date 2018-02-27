@@ -3,21 +3,21 @@
     "username": "postgres",
     "password": null,
     "database": "express_gallery",
-    "host": "127.0.0.1",
+    "host": "18.219.167.82",
     "dialect": "postgres"
   },
   "test": {
     "username": "postgres",
     "password": null,
     "database": "express_gallery",
-    "host": "127.0.0.1",
+    "host": "18.219.167.82",
     "dialect": "postgres"
   },
   "production": {
     "username": "root",
     "password": null,
     "database": "database_production",
-    "host": "127.0.0.1",
+    "host": "18.219.167.82",
     "dialect": "mysql"
   },
   "SESSION_SECRET": "keyboard cat"
