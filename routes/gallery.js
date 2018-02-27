@@ -15,36 +15,6 @@ router.route('/new')
     }
   });
 
-/* See a form to edit a gallery photo identified by the :id param */
-router.route('/:id/edit')
-  .get((req, res) => {
-    Gallery.findById(req.params.id)
-      .then((photo) => {
-        if(req.user) {
-          if(req.user.username === photo.author) {
-            // user can only edit picture if they created it
-            res.render('photo-edit', {
-              id: photo.id,
-              title: photo.title,
-              link: photo.link,
-              description: photo.description,
-              username: req.user.username
-            });
-          } else {
-            // redirect user to error page
-            res.render('error', {
-              username: req.user.username
-            });
-          }
-        } else {
-          res.render('error');
-        }
-      })
-      .catch((err) => {
-        console.log('ERROR: ', err);
-      });
-  });
-
 /* See a single gallery photo */
 router.route('/:id')
   // To see a single gallery photo
@@ -53,25 +23,13 @@ router.route('/:id')
     Gallery.findById(req.params.id)
       .then((photo) => {
         if(req.user) {
-          if(req.user.username === photo.author) {
-            res.render('photo-detail', {
-              id: photo.id,
-              title: photo.title,
-              author: photo.author,
-              link: photo.link,
-              description: photo.description,
-              username: req.user.username,
-              auth: true
-            });
-          } else {
-            res.render('photo-detail', {
-              title: photo.title,
-              author: photo.author,
-              link: photo.link,
-              description: photo.description,
-              username: req.user.username
-            });
-          }
+          res.render('photo-detail', {
+            title: photo.title,
+            author: photo.author,
+            link: photo.link,
+            description: photo.description,
+            username: req.user.username
+          });
         } else {
           res.render('photo-detail', {
             title: photo.title,
@@ -80,40 +38,6 @@ router.route('/:id')
             description: photo.description
           });
         }
-      })
-      .catch((err) => {
-        console.log('ERROR: ', err);
-      });
-  })
-  // Update a single gallery photo
-  .put((req, res) => {
-    console.log(req.params.id);
-    Gallery.update({
-      title: req.body.title,
-      link: req.body.link,
-      description: req.body.description
-    }, {
-      where: {
-        id: parseInt(req.params.id)
-      }
-    })
-      .then((photo) => {
-        res.redirect(`/gallery/${req.params.id}`);
-      })
-      .catch((err) => {
-        console.log('ERROR: ', err);
-      });
-  })
-  // Delete a single gallery photo
-  .delete((req, res) => {
-    Gallery.destroy({
-      where : {
-        id: req.params.id
-      }
-    })
-      .then((photo) => {
-        res.redirect('/');
-        res.end();
       })
       .catch((err) => {
         console.log('ERROR: ', err);

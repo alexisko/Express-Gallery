@@ -48,12 +48,6 @@ router.route('/photos')
     });
   });
 
-/* See "Sign-Up" page */
-router.route('/signup')
-  .get((req, res) => {
-    res.render('signup');
-  });
-
 /* Create new user */
 router.route('/')
   .post((req, res) => {

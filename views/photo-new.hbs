@@ -1,7 +1,7 @@
 <div class="form">
   <h1>Post a new photo:</h1>
 
-  <form action="/gallery" method="POST">
+  <form action="/gallery" method="POST" onsubmit="return validate();">
     <label>Title</label>
     <input class="input" type="text" name="title">
 

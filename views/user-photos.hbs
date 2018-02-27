@@ -8,16 +8,6 @@
           </div>
         </a>
       </div>
-      <div class="settings">
-        <form action="/gallery/{{id}}" method="post">
-          <input type="hidden" name="_method" value="GET">
-          <input class="submit-btn btn green space" type="submit" value="edit">
-        </form>
-        <form action="/gallery/{{id}}" method="post">
-          <input type="hidden" name="_method" value="DELETE">
-          <input class="submit-btn btn red space" type="submit" value="delete">
-        </form>
-      </div>
   {{else}}
     <h3>Oops, looks like you don't have any!</h3>
     <p>Post your first picture <a href="/gallery/new">here.</a><p>

@@ -195,13 +195,8 @@ label {
   height: 425px; }
 
 .user-photo {
-  width: 80%; }
-
-.settings {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center; }
+  width: 80%;
+  margin-bottom: 1.5rem; }
 
 .space {
   margin-left: 1rem; }
