@@ -32,4 +32,4 @@ node_modules
 
 gulpfile.js
 dump.rdb
-config
+config.json
