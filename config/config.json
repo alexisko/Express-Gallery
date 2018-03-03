@@ -14,11 +14,11 @@
     "dialect": "postgres"
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
+    "username": "hiki",
+    "password": "expressgallery2018",
+    "database": "express_gallery_production",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "postgres"
   },
   "SESSION_SECRET": "keyboard cat"
 }
