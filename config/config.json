@@ -1,24 +1,24 @@
 {
   "development": {
-    "username": "hiki",
+    "username": "change",
     "password": null,
-    "database": "express_gallery",
-    "host": "127.0.0.1",
-    "dialect": "postgres"
+    "database": "change",
+    "host": "change",
+    "dialect": "change"
   },
   "test": {
-    "username": "hiki",
+    "username": "change",
     "password": null,
-    "database": "express_gallery",
-    "host": "127.0.0.1",
-    "dialect": "postgres"
+    "database": "change",
+    "host": "change",
+    "dialect": "change"
   },
   "production": {
-    "username": "hiki",
-    "password": "expressgallery2018",
-    "database": "express_gallery_production",
-    "host": "127.0.0.1",
-    "dialect": "postgres"
+    "username": "change",
+    "password": "change",
+    "database": "change",
+    "host": "change",
+    "dialect": "change"
   },
-  "SESSION_SECRET": "keyboard cat"
+  "SESSION_SECRET": "change"
 }
